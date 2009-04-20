@@ -5,11 +5,11 @@
 
 Summary:	%{_pearname} - provides the ability to manipulate FOAF RDF/XML
 Name:		php-pear-%{_pearname}
-Version:	0.2
-Release:	%mkrel 9
+Version:	0.3.0
+Release:	%mkrel 1
 License:	PHP License
 Group:		Development/PHP
-Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tar.bz2
+Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
 URL:		http://pear.php.net/package/XML_FOAF/
 Requires(post): php-pear
 Requires(preun): php-pear
@@ -43,16 +43,10 @@ find -type f | grep -v ".gif" | grep -v ".png" | grep -v ".jpg" | xargs dos2unix
 %install
 rm -rf %{buildroot}
 
-install -d %{buildroot}%{_datadir}/pear/%{_class}/FOAF/RAP/{model,rdql,syntax,util,vocabulary}
+install -d %{buildroot}%{_datadir}/pear/%{_class}/FOAF/
 
 install %{_pearname}-%{version}/*.php %{buildroot}%{_datadir}/pear/%{_class}
 install %{_pearname}-%{version}/%{_subclass}/*.php %{buildroot}%{_datadir}/pear/%{_class}/%{_subclass}
-install %{_pearname}-%{version}/%{_subclass}/RAP/*.php %{buildroot}%{_datadir}/pear/%{_class}/%{_subclass}/RAP
-install %{_pearname}-%{version}/%{_subclass}/RAP/model/*.php %{buildroot}%{_datadir}/pear/%{_class}/%{_subclass}/RAP/model
-install %{_pearname}-%{version}/%{_subclass}/RAP/rdql/*.php %{buildroot}%{_datadir}/pear/%{_class}/%{_subclass}/RAP/rdql
-install %{_pearname}-%{version}/%{_subclass}/RAP/syntax/*.php %{buildroot}%{_datadir}/pear/%{_class}/%{_subclass}/RAP/syntax
-install %{_pearname}-%{version}/%{_subclass}/RAP/util/*.php %{buildroot}%{_datadir}/pear/%{_class}/%{_subclass}/RAP/util
-install %{_pearname}-%{version}/%{_subclass}/RAP/vocabulary/*.php %{buildroot}%{_datadir}/pear/%{_class}/%{_subclass}/RAP/vocabulary
 
 install -d %{buildroot}%{_datadir}/pear/packages
 install -m0644 package.xml %{buildroot}%{_datadir}/pear/packages/%{_pearname}.xml
@@ -83,7 +77,8 @@ rm -rf %{buildroot}
 %defattr(644,root,root,755)
 %doc %{_pearname}-%{version}/docs/*
 %{_datadir}/pear/%{_class}/*.php
-%{_datadir}/pear/%{_class}/%{_subclass}
+%dir %{_datadir}/pear/%{_class}/%{_subclass}
+%{_datadir}/pear/%{_class}/%{_subclass}/*.php
 %{_datadir}/pear/packages/%{_pearname}.xml
 
 
