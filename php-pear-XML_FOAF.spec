@@ -4,7 +4,7 @@
 
 Name:		php-pear-%{upstream_name}
 Version:	0.3.0
-Release:	7
+Release:	8
 Summary:	Provides the ability to manipulate FOAF RDF/XML
 License:	PHP License
 Group:		Development/PHP
